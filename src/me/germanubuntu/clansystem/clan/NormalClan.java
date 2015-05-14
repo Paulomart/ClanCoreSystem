@@ -10,8 +10,8 @@ import java.util.UUID;
 import org.bukkit.Location;
 import org.bukkit.configuration.file.YamlConfiguration;
 
-public class NormalClan implements Clan{
-	
+public class NormalClan implements Clan {
+
 	private String name, contraction;
 	private UUID owner, uuid;
 	private List<UUID> users;
@@ -19,8 +19,8 @@ public class NormalClan implements Clan{
 	private Location home;
 	private int deaths, kills;
 	private HashMap<String, Object> values;
-	
-	protected NormalClan(String name, String contraction, UUID owner, List<UUID> users, UUID clanUUID, Location home, int kills, int deaths, HashMap<String, Object> values){
+
+	protected NormalClan(String name, String contraction, UUID owner, List<UUID> users, UUID clanUUID, Location home, int kills, int deaths, HashMap<String, Object> values) {
 		invitedPlayers = new ArrayList<UUID>();
 		this.name = name;
 		this.contraction = contraction;
@@ -33,7 +33,7 @@ public class NormalClan implements Clan{
 		this.values = values;
 		values.put("ExampleValue", false);
 	}
-	
+
 	@Override
 	public UUID getOwner() {
 		return owner;
@@ -91,7 +91,7 @@ public class NormalClan implements Clan{
 
 	@Override
 	public void save(File file) {
-		if(!file.exists()){
+		if (!file.exists()) {
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
@@ -99,7 +99,6 @@ public class NormalClan implements Clan{
 				e.printStackTrace();
 			}
 		}
-		
 		YamlConfiguration config = YamlConfiguration.loadConfiguration(file);
 		config.set("clan.name", name);
 		config.set("clan.contraction", contraction);
@@ -108,24 +107,20 @@ public class NormalClan implements Clan{
 		config.set("clan.deaths", deaths);
 		config.set("clan.kills", kills);
 		config.set("ClanValues", values);
-		
-		if(hasHome()){
+		if (hasHome()) {
 			config.set("clan.home.x", home.getBlockX());
 			config.set("clan.home.y", home.getBlockY());
 			config.set("clan.home.z", home.getBlockZ());
 			config.set("clan.home.world", home.getWorld().getName());
 			config.set("clan.hashome", true);
-		}else{
+		} else {
 			config.set("clan.hashome", false);
 		}
-		
 		List<String> usersString = new ArrayList<String>();
-		for(UUID uuid : users){
+		for (UUID uuid : users) {
 			usersString.add(uuid.toString());
 		}
-		
 		config.set("clan.users", usersString);
-		
 		try {
 			config.save(file);
 		} catch (IOException e) {
@@ -136,8 +131,8 @@ public class NormalClan implements Clan{
 
 	@Override
 	public boolean isInvited(UUID uuid) {
-		for(UUID invited : invitedPlayers){
-			if(invited.equals(uuid)){
+		for (UUID invited : invitedPlayers) {
+			if (invited.equals(uuid)) {
 				return true;
 			}
 		}
@@ -166,7 +161,7 @@ public class NormalClan implements Clan{
 
 	@Override
 	public boolean hasHome() {
-		if(home != null){
+		if (home != null) {
 			return true;
 		}
 		return false;

@@ -9,9 +9,9 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class ClanLoadEvent extends Event implements Cancellable{
-	
-    private static final HandlerList handlers = new HandlerList();
+public class ClanLoadEvent extends Event implements Cancellable {
+
+	private static final HandlerList handlers = new HandlerList();
 	private boolean cancelled;
 	private String name, contraction;
 	private UUID owner, clanUUID;
@@ -19,8 +19,8 @@ public class ClanLoadEvent extends Event implements Cancellable{
 	private int kills, deaths;
 	private HashMap<String, Object> values;
 	private Location home;
-	
-	public ClanLoadEvent(String name, String contraction, UUID owner, List<UUID> uuids, UUID clanUUID, Location home, int kills, int deaths, HashMap<String, Object> values){
+
+	public ClanLoadEvent(String name, String contraction, UUID owner, List<UUID> uuids, UUID clanUUID, Location home, int kills, int deaths, HashMap<String, Object> values) {
 		this.name = name;
 		this.contraction = contraction;
 		this.owner = owner;
@@ -31,43 +31,43 @@ public class ClanLoadEvent extends Event implements Cancellable{
 		this.deaths = deaths;
 		this.values = values;
 	}
-	
-	public String getName(){
+
+	public String getName() {
 		return name;
 	}
-	
-	public String getContraction(){
+
+	public String getContraction() {
 		return contraction;
 	}
-	
-	public UUID getOwner(){
+
+	public UUID getOwner() {
 		return owner;
 	}
-	
-	public List<UUID> getUsers(){
+
+	public List<UUID> getUsers() {
 		return users;
 	}
-	
-	public UUID getClanUUID(){
+
+	public UUID getClanUUID() {
 		return clanUUID;
 	}
-	
-	public Location getHome(){
+
+	public Location getHome() {
 		return home;
 	}
-	
-	public int getDeaths(){
+
+	public int getDeaths() {
 		return deaths;
 	}
-	
-	public int getKills(){
+
+	public int getKills() {
 		return kills;
 	}
-	
-	public HashMap<String, Object> getValues(){
+
+	public HashMap<String, Object> getValues() {
 		return values;
 	}
-	
+
 	@Override
 	public boolean isCancelled() {
 		return cancelled;
@@ -82,5 +82,4 @@ public class ClanLoadEvent extends Event implements Cancellable{
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-
 }

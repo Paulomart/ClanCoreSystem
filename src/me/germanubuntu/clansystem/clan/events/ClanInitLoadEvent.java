@@ -4,15 +4,15 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class ClanInitLoadEvent extends Event implements Cancellable{
-	
-    private static final HandlerList handlers = new HandlerList();
+public class ClanInitLoadEvent extends Event implements Cancellable {
+
+	private static final HandlerList handlers = new HandlerList();
 	private boolean cancelled;
-	
-	public ClanInitLoadEvent(){
+
+	public ClanInitLoadEvent() {
 		cancelled = false;
 	}
-	
+
 	@Override
 	public boolean isCancelled() {
 		return cancelled;
@@ -27,5 +27,4 @@ public class ClanInitLoadEvent extends Event implements Cancellable{
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-
 }

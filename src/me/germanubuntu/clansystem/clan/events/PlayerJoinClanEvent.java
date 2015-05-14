@@ -7,32 +7,32 @@ import org.bukkit.event.Cancellable;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 
-public class PlayerJoinClanEvent extends Event implements Cancellable{
-	
-    private static final HandlerList handlers = new HandlerList();
+public class PlayerJoinClanEvent extends Event implements Cancellable {
+
+	private static final HandlerList handlers = new HandlerList();
 	private Clan clan;
 	private Player player;
 	private boolean cancelled;
-	
-	public PlayerJoinClanEvent(Clan clan, Player player){
+
+	public PlayerJoinClanEvent(Clan clan, Player player) {
 		this.clan = clan;
 		this.player = player;
 		this.cancelled = false;
 	}
-	
+
 	@Override
 	public boolean isCancelled() {
 		return cancelled;
 	}
-	
-	public Player getPlayer(){
+
+	public Player getPlayer() {
 		return player;
 	}
-	
-	public Clan getClan(){
+
+	public Clan getClan() {
 		return clan;
 	}
-	
+
 	@Override
 	public void setCancelled(boolean cancelled) {
 		this.cancelled = cancelled;
@@ -42,5 +42,4 @@ public class PlayerJoinClanEvent extends Event implements Cancellable{
 	public HandlerList getHandlers() {
 		return handlers;
 	}
-
 }

@@ -8,19 +8,19 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import lombok.Getter;
 
 public class Config {
-	
+
 	@Getter
 	private File file;
 	@Getter
 	private int maxClans, maxNameLenght, maxContractionLenght;
-	
-	protected Config(File file){
+
+	protected Config(File file) {
 		this.file = file;
 	}
-	
-	public void load(){
+
+	public void load() {
 		YamlConfiguration config = null;
-		if(!file.exists()){
+		if (!file.exists()) {
 			try {
 				file.createNewFile();
 			} catch (IOException e) {
@@ -43,5 +43,4 @@ public class Config {
 		maxNameLenght = config.getInt("MaxNameLenght");
 		maxContractionLenght = config.getInt("MaxContractionLenght");
 	}
-	
 }
